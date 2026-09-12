@@ -75,8 +75,8 @@ const TIERS: Tier[] = [
       "Three Extended Readings — draw one today, keep two for when it matters.",
     features: [
       "Three full Extended Readings",
-      "Draw one now, keep two saved",
-      "The whole budget, halved away",
+      "Draw one now, two more whenever you return",
+      "That's $6.66 per reading, not $9.99",
     ],
     cta: `Get the bundle · $${formatPrice(READING_BUNDLE_PRICE)}`,
     href: PAYMENT_LINKS.readingBundle,
