@@ -1,11 +1,12 @@
 /**
  * ExtendedReading — the paid five-card reading view ($9.99).
  *
- * Offer + support framing, an "Unlock" CTA that opens the Stripe payment link
- * in a new tab (honor-based, client-side: payment is never verified, and the
- * draw is never gated on the link), then a five-card draw — Foundation ·
- * Current path · Hidden influence · Near future · Outcome — with a position
- * note + full card detail per card, and the extended synthesized reading.
+ * Value-framed offer: an "Unlock" CTA that opens the Stripe payment link in a
+ * new tab (honor-based, client-side: payment is never verified, and the draw
+ * is never gated on the link), a secondary line pointing to the Reading
+ * Bundle, then a five-card draw — Foundation · Current path · Hidden
+ * influence · Near future · Outcome — with a position note + full card detail
+ * per card, and the extended synthesized reading.
  *
  * SSR-safe: this component only mounts after the visitor clicks the Extended
  * tab (client-side), and its draw runs in an event handler, so nothing
@@ -18,6 +19,7 @@ import { DECK, type TarotCard } from "~/data/deck";
 import {
   EXTENDED_READING_PRICE,
   PAYMENT_LINKS,
+  READING_BUNDLE_PRICE,
   formatPrice,
 } from "~/lib/payments";
 import { shuffle } from "~/lib/random";
@@ -141,7 +143,7 @@ export function ExtendedReading() {
         </p>
       </div>
 
-      {/* Unlock card — support framing, honor-based fulfilment */}
+      {/* Unlock card — value framing, honor-based fulfilment */}
       <div
         className="animate-fade-up mx-auto mt-10 max-w-xl rounded-2xl border border-gold-500/25 bg-night-900/70 p-6 text-center shadow-[0_25px_70px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:p-8"
         style={{ animationDelay: "0.1s" }}
@@ -150,9 +152,9 @@ export function ExtendedReading() {
           Unlock the Extended Reading
         </p>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-cream-100/65">
-          A paid reading, drawn once, held as long as you need. Your support— $
-          {formatPrice(EXTENDED_READING_PRICE)} — keeps Divine Insight free for
-          everyone who arrives looking for a quiet moment.
+          Five cards across five positions — Foundation, Current path, Hidden
+          influence, Near future, Outcome — each read in its place, then woven
+          into one longer, more personal reading.
         </p>
         <a
           href={PAYMENT_LINKS.extendedReading}
@@ -165,8 +167,19 @@ export function ExtendedReading() {
         </a>
         <p className="mt-4 text-xs leading-relaxed text-cream-100/45 italic">
           Payments are handled securely through Stripe in a new tab. Once
-          you&rsquo;ve supported the reading, draw it right here — in this
+          you&rsquo;ve unlocked the reading, draw it right here — in this
           session, on this device.
+        </p>
+        <p className="mt-2.5 text-xs text-cream-100/55">
+          <a
+            href={PAYMENT_LINKS.readingBundle}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-gold-500/50 underline-offset-2 transition hover:text-gold-200 hover:decoration-gold-400"
+          >
+            Or take three Extended Readings for ${formatPrice(READING_BUNDLE_PRICE)}{" "}
+            — one for today, two for when it matters
+          </a>
         </p>
       </div>
 
