@@ -1,7 +1,7 @@
 /**
  * GiftReading — the paid single-card reading section ($5.00).
  *
- * An elegant small section on the Draw view: support framing + a "Gift a
+ * An elegant small section on the Draw view: value framing + a "Send a
  * reading" CTA that opens the Stripe payment link in a new tab (honor-based —
  * payment is never verified and the draw is never gated), then a one-card draw
  * with full detail and a short synthesized line from singleCardLine.
@@ -76,10 +76,8 @@ export function GiftReading() {
           A single card, a small blessing
         </h2>
         <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-cream-100/60">
-          One card, read in full, with a short line to carry — keep it for
-          yourself, or pass it on to someone you care about. Your gift of $
-          {formatPrice(GIFT_READING_PRICE)} keeps Divine Insight free for
-          everyone who comes looking for a quiet moment.
+          One card, read in full and sent with your name — a small blessing
+          they can return to whenever they need it.
         </p>
         <a
           href={PAYMENT_LINKS.giftReading}
@@ -88,12 +86,12 @@ export function GiftReading() {
           className="mt-6 inline-flex cursor-pointer items-center gap-3 rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-500 px-9 py-4 text-sm font-medium tracking-[0.14em] text-night-950 uppercase shadow-[0_10px_40px_rgba(198,160,85,0.35)] transition hover:shadow-[0_12px_55px_rgba(198,160,85,0.55)] hover:brightness-105 active:scale-[0.98] sm:text-base"
         >
           <span aria-hidden>✦</span>
-          <span>Gift a reading · ${formatPrice(GIFT_READING_PRICE)}</span>
+          <span>Send a reading · ${formatPrice(GIFT_READING_PRICE)}</span>
         </a>
         <p className="mx-auto mt-4 max-w-md text-xs leading-relaxed text-cream-100/45 italic">
           Payments are handled securely through Stripe in a new tab. Once
-          you&rsquo;ve gifted, draw your card right here — this session, this
-          device.
+          you&rsquo;ve sent your gift, draw your card right here — this
+          session, this device.
         </p>
 
         {/* One-card draw */}

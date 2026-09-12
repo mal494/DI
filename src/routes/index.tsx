@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AllCardsModal } from "~/components/all-cards-modal";
 import { CardFace } from "~/components/card-face";
+import { DailyCard } from "~/components/daily-card";
 import { ExtendedReading } from "~/components/extended-reading";
 import { GiftReading } from "~/components/gift-reading";
+import { Pricing } from "~/components/pricing";
 import { ReadingPanel } from "~/components/reading-panel";
 import { DECK, type TarotCard } from "~/data/deck";
+import {
+  EXTENDED_READING_PRICE,
+  PAYMENT_LINKS,
+  SINGLE_INSIGHT_PRICE,
+  formatPrice,
+} from "~/lib/payments";
 import { shuffle } from "~/lib/random";
 import { synthesizeReading } from "~/lib/synthesis";
 
@@ -267,7 +275,7 @@ function Home() {
               </button>
             </nav>
             <span className="hidden text-[10px] tracking-[0.35em] text-cream-100/40 uppercase lg:inline">
-              The 78-Card Deck · Free · Extended · Gift
+              The 78-Card Deck · Readings from $2.99
             </span>
           </div>
         </header>
@@ -336,12 +344,14 @@ function Home() {
                       </span>
                     </button>
                     <p className="text-xs text-cream-100/50">
-                      Drawn at random · Never repeated in a reading · Yours to
-                      reflect on
+                      Free three-card reading · Go deeper from $2.99
                     </p>
                   </div>
                 </div>
               </section>
+
+              {/* Card of the Day — free daily retention strip */}
+              <DailyCard />
 
               {/* Reading */}
               <section
@@ -384,6 +394,39 @@ function Home() {
                   />
                 )}
 
+                {phase === "done" && summary && (
+                  <div className="animate-fade-up mx-auto mt-8 max-w-2xl rounded-2xl border border-gold-500/20 bg-night-900/40 px-6 py-5 text-center backdrop-blur-sm sm:px-8">
+                    <p className="text-[10px] tracking-[0.45em] text-gold-400/90 uppercase">
+                      This was a glimpse
+                    </p>
+                    <h3 className="mt-2 font-display text-2xl font-medium tracking-[0.08em] text-cream-50 sm:text-3xl">
+                      Go deeper
+                    </h3>
+                    <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-cream-100/60">
+                      Your three cards opened a door — a focused or five-card
+                      reading walks further through it.
+                    </p>
+                    <div className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                      <a
+                        href={PAYMENT_LINKS.singleInsight}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-gold-500/50 px-6 py-2.5 text-xs tracking-[0.14em] text-gold-300 uppercase transition hover:border-gold-400/80 hover:bg-gold-500/10 hover:text-gold-200 active:scale-[0.98]"
+                      >
+                        Single Insight · ${formatPrice(SINGLE_INSIGHT_PRICE)}
+                      </a>
+                      <a
+                        href={PAYMENT_LINKS.extendedReading}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-gold-500/50 px-6 py-2.5 text-xs tracking-[0.14em] text-gold-300 uppercase transition hover:border-gold-400/80 hover:bg-gold-500/10 hover:text-gold-200 active:scale-[0.98]"
+                      >
+                        Extended Reading · ${formatPrice(EXTENDED_READING_PRICE)}
+                      </a>
+                    </div>
+                  </div>
+                )}
+
                 <div className="mt-10 flex min-h-[5rem] flex-col items-center gap-3 sm:mt-14">
                   {phase === "done" && (
                     <button
@@ -403,6 +446,9 @@ function Home() {
                   )}
                 </div>
               </section>
+
+              {/* Paid reading ladder — Single · Extended · Bundle · Gift */}
+              <Pricing />
 
               {/* Gift — one-card paid reading */}
               <GiftReading />
