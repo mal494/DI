@@ -7,6 +7,7 @@ import { ExtendedReading } from "~/components/extended-reading";
 import { GiftReading } from "~/components/gift-reading";
 import { Pricing } from "~/components/pricing";
 import { ReadingPanel } from "~/components/reading-panel";
+import { TipJar } from "~/components/tip-jar";
 import { DECK, type TarotCard } from "~/data/deck";
 import {
   EXTENDED_READING_PRICE,
@@ -452,6 +453,9 @@ function Home() {
 
               {/* Gift — one-card paid reading */}
               <GiftReading />
+
+              {/* Tip jar — end-of-page support rail for engaged free readers */}
+              <TipJar />
             </>
           )}
         </main>
