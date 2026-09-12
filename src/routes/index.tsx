@@ -421,8 +421,7 @@ function Home() {
                         rel="noopener noreferrer"
                         className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-gold-500/50 px-6 py-2.5 text-xs tracking-[0.14em] text-gold-300 uppercase transition hover:border-gold-400/80 hover:bg-gold-500/10 hover:text-gold-200 active:scale-[0.98]"
                       >
-                        Extended Reading · $
-                        {formatPrice(EXTENDED_READING_PRICE)}
+                        Extended Reading · ${formatPrice(EXTENDED_READING_PRICE)}
                       </a>
                     </div>
                   </div>
