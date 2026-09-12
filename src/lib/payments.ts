@@ -27,11 +27,31 @@ export const PAYMENT_LINKS = {
   giftReading: "https://buy.stripe.com/eVqeVdcOTap80Bx60hes001",
 } as const;
 
+/**
+ * Optional tips (donation path) — fixed USD amounts, honor-based like the
+ * rest of the site: the tip button opens Stripe in a new tab; nothing here
+ * verifies payment and no UI claims it does. Framed as a "leave a tip for the
+ * free readings" rail — gratitude capture for engaged readers, never pressure.
+ */
+export const TIP_LINKS = {
+  /** Leave a Tip — USD 3.00. */
+  tip3: "https://buy.stripe.com/aFadR93ejcxg2JF3S9es006",
+  /** Leave a Tip — USD 5.00. */
+  tip5: "https://buy.stripe.com/bJe7sLeX11SC0BxewNes004",
+  /** Leave a Tip — USD 10.00. */
+  tip10: "https://buy.stripe.com/00w9ATdSXfJsckf9ctes005",
+} as const;
+
 /** Display prices (USD) for the unlock CTAs. */
 export const SINGLE_INSIGHT_PRICE = 2.99;
 export const EXTENDED_READING_PRICE = 9.99;
 export const READING_BUNDLE_PRICE = 19.99;
 export const GIFT_READING_PRICE = 5.0;
+
+/** Display prices (USD) for the tip rail. */
+export const TIP_3_PRICE = 3.0;
+export const TIP_5_PRICE = 5.0;
+export const TIP_10_PRICE = 10.0;
 
 /** "9.99" / "5.00" — for on-page price display. */
 export function formatPrice(price: number): string {
