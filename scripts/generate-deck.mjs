@@ -1,6 +1,9 @@
 /**
  * generate-deck.mjs - builds src/data/deck.generated.ts from the pinned
- * Divine Insight Core dataset.
+ * Divine Insight Core release.
+ *
+ * The dataset is fetched from the public Core repo at the tag in core.version,
+ * so this repo keeps no copy of the card data. Needs network access.
  *
  * Card meanings, keywords, element and astrology come from Core. Presentation
  * details the dataset does not carry - the glyph shown on a card face and the
@@ -10,11 +13,22 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 
-const DATA = "data/tarot_data_v1.5.json";
+const CORE_REPO = "mal494/divine-insight-core";
+const DATASET = "tarot_data_v1.5.json";
 const PRESENTATION = "scripts/deck-presentation.json";
 const OUT = "src/data/deck.generated.ts";
 
-const core = JSON.parse(readFileSync(DATA, "utf8"));
+// The Core release tag to build against. Bump core.version and DATASET
+// together when taking a new dataset.
+const tag = readFileSync("core.version", "utf8").trim();
+const url = `https://raw.githubusercontent.com/${CORE_REPO}/${tag}/data/${DATASET}`;
+
+const response = await fetch(url);
+if (response.ok === false) {
+  throw new Error(`could not fetch Core ${tag} from ${url} (HTTP ${response.status})`);
+}
+const core = await response.json();
+
 const pres = JSON.parse(readFileSync(PRESENTATION, "utf8"));
 
 const SUIT_ELEMENT = { Wands: "Fire", Cups: "Water", Swords: "Air", Pentacles: "Earth" };
