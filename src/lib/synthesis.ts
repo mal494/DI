@@ -32,8 +32,7 @@
  * The five original slots are unchanged fields, and with no question the
  * three-card output is byte-identical to the pre-hook wording.
  */
-import { MAJOR_ARCANA } from "../data/major-arcana";
-import type { TarotCard } from "../data/deck";
+import { MAJOR_ARCANA, type TarotCard } from "../data/deck";
 
 export type ArcanaKind = "major" | "court" | "pip";
 export type ElementName = "Fire" | "Water" | "Air" | "Earth";

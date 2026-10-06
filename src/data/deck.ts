@@ -2,17 +2,21 @@
  * The complete 78-card Divine Insight deck.
  *
  * Import `DECK` from here whenever a reading (or any feature) needs the full
- * deck. `TarotCard` is the shared shape: majors and minors carry the same
- * fields (id, name, symbol, meaning, keywords, element, astrology, numerology).
+ * deck, or `MAJOR_ARCANA` / `MINOR_ARCANA` when you need one half of it. The
+ * card data itself is generated from Divine Insight Core - see
+ * `deck.generated.ts` and `scripts/generate-deck.mjs`. Do not hand-edit card
+ * copy here or there; card changes land in Core first:
+ * https://github.com/mal494/divine-insight-core
  */
-import { MAJOR_ARCANA, type MajorArcanaCard } from "./major-arcana";
-import { MINOR_ARCANA, type MinorArcanaCard } from "./minor-arcana";
+export {
+  DECK,
+  MAJOR_ARCANA,
+  MINOR_ARCANA,
+  type TarotCard,
+} from "./deck.generated";
 
-export type TarotCard = MajorArcanaCard | MinorArcanaCard;
+import { DECK } from "./deck.generated";
 
-/** All 78 cards: the 22 Major Arcana followed by the 56 Minor Arcana. */
-export const DECK: TarotCard[] = [...MAJOR_ARCANA, ...MINOR_ARCANA];
-
-export function getCardById(id: string): TarotCard | undefined {
+export function getCardById(id: string) {
   return DECK.find((card) => card.id === id);
 }

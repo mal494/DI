@@ -9,7 +9,7 @@
  * render. The strip is free — no payment link.
  */
 import { useMemo } from "react";
-import { MAJOR_ARCANA } from "~/data/major-arcana";
+import { MAJOR_ARCANA } from "~/data/deck";
 
 /** FNV-1a — a stable, dependency-free string hash for the date seed. */
 function hashString(input: string): number {
