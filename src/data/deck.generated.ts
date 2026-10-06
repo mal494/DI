@@ -13,6 +13,10 @@ export interface TarotCard {
   id: string;
   /** The card's traditional name. */
   name: string;
+  /** Which half of the deck the card belongs to. */
+  arcana: "major" | "minor";
+  /** Suit name for minors ("Wands", "Cups", "Swords", "Pentacles"); null for majors. */
+  suit: string | null;
   /** A glyph rendered as the card face placeholder when no artwork exists. */
   symbol: string;
   /** Reflective interpretation, warm and specific. */
@@ -32,6 +36,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-fool",
     name: "The Fool",
+    arcana: "major",
+    suit: null,
     symbol: "🃏",
     meaning:
       "Numbered zero, the Fool steps toward a cliff edge with a white rose and a small bundle, trusting the open air of Uranus to carry him. A leap of faith into the unknown asks you to begin before you feel ready.",
@@ -43,6 +49,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-magician",
     name: "The Magician",
+    arcana: "major",
+    suit: null,
     symbol: "🪄",
     meaning:
       "One hand raised to the heavens and one pointed to the earth, the Magician channels Mercury's quickness through the four suit tools on his table. The alignment of will and tools means your intention, skill, and timing finally point the same direction.",
@@ -54,6 +62,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-high-priestess",
     name: "The High Priestess",
+    arcana: "major",
+    suit: null,
     symbol: "🌙",
     meaning:
       "Seated between the black and white pillars with a crescent moon at her feet, she guards a scroll only stillness can read. Silence reveals what is hidden, and her lunar water asks you to trust impressions that arrive before evidence does.",
@@ -65,6 +75,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-empress",
     name: "The Empress",
+    arcana: "major",
+    suit: null,
     symbol: "🌹",
     meaning:
       "Reclining among ripening wheat in a Venus-crowned robe, the Empress makes growth look unhurried. The peak of creative fertility asks you to tend what you have planted with warmth, comfort, and earthy patience rather than force it to bloom early.",
@@ -76,6 +88,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-emperor",
     name: "The Emperor",
+    arcana: "major",
+    suit: null,
     symbol: "👑",
     meaning:
       "Enthroned in stone with ram-headed arms and Aries fire behind him, the Emperor builds frameworks that outlast moods. Implementation of order means boundaries, routines, and clear responsibility turn scattered ambition into something durable you can actually stand on.",
@@ -87,6 +101,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-hierophant",
     name: "The Hierophant",
+    arcana: "major",
+    suit: null,
     symbol: "📜",
     meaning:
       "Raised in blessing between two pillars with keys crossed at his feet, the Hierophant keeps the Taurean long memory of a tradition. Seeking counsel in established systems means a teacher, institution, or inherited practice has something tested to offer you now.",
@@ -98,6 +114,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-lovers",
     name: "The Lovers",
+    arcana: "major",
+    suit: null,
     symbol: "💞",
     meaning:
       "Two figures stand bare beneath an angel, flanked by the trees of knowledge and life, with airy Gemini making this a meeting of minds. A choice based on deep core values asks you to unite what you want with who you are.",
@@ -109,6 +127,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-chariot",
     name: "The Chariot",
+    arcana: "major",
+    suit: null,
     symbol: "🏇",
     meaning:
       "Armored and canopied with stars, the charioteer drives a black and a white sphinx with reins of will alone, Cancer's shell protecting a soft interior. Steering opposing forces toward success means your contradictions pull together once you choose a single direction.",
@@ -120,6 +140,8 @@ export const DECK: TarotCard[] = [
   {
     id: "strength",
     name: "Strength",
+    arcana: "major",
+    suit: null,
     symbol: "🦁",
     meaning:
       "A woman crowned with the infinity symbol closes a lion's jaws with her hands and not a weapon, Leo's fire warmed rather than smothered. Mastery of the self through gentleness means patience and compassion accomplish what intimidation never could manage.",
@@ -131,6 +153,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-hermit",
     name: "The Hermit",
+    arcana: "major",
+    suit: null,
     symbol: "🏮",
     meaning:
       "Alone on a grey summit, the Hermit lifts a lantern holding a single star and leans on a staff of experience, Virgo's patience in every step. Withdrawal to seek inner truth means stepping back is how your next instruction arrives.",
@@ -142,6 +166,8 @@ export const DECK: TarotCard[] = [
   {
     id: "wheel-of-fortune",
     name: "Wheel of Fortune",
+    arcana: "major",
+    suit: null,
     symbol: "🎡",
     meaning:
       "Four winged creatures hold the corners while the great wheel turns with Jupiter's expansive sweep, lifting what was low and lowering what was high. Accepting the inevitable motion of the universe means change is arriving and your relationship to it matters most.",
@@ -153,6 +179,8 @@ export const DECK: TarotCard[] = [
   {
     id: "justice",
     name: "Justice",
+    arcana: "major",
+    suit: null,
     symbol: "⚖️",
     meaning:
       "Upright sword in one hand and level scales in the other, Justice sits between airy Libra's pillars and weighs without flattery. Objective evaluation and balance means facts, agreements, and consequences are being measured, and your own honesty tips the scale.",
@@ -164,6 +192,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-hanged-man",
     name: "The Hanged Man",
+    arcana: "major",
+    suit: null,
     symbol: "⏳",
     meaning:
       "Suspended by one ankle from a living tree, haloed and oddly serene, the Hanged Man trades motion for Neptune's watery insight. Finding clarity through stillness means the whole view changes once you stop struggling to right yourself again.",
@@ -175,6 +205,8 @@ export const DECK: TarotCard[] = [
   {
     id: "death",
     name: "Death",
+    arcana: "major",
+    suit: null,
     symbol: "🦋",
     meaning:
       "The skeletal rider in black armor moves steadily forward, and the thirteenth key of the Major Arcana asks you to let one chapter truly end. Under Scorpio's watery depths, release clears ground for genuine rebirth.",
@@ -186,6 +218,8 @@ export const DECK: TarotCard[] = [
   {
     id: "temperance",
     name: "Temperance",
+    arcana: "major",
+    suit: null,
     symbol: "⚗️",
     meaning:
       "The angel pours water between two cups without spilling a drop, one foot on land and one in the stream. Sagittarian fire aimed with patience turns opposing needs into a single workable purpose.",
@@ -197,6 +231,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-devil",
     name: "The Devil",
+    arcana: "major",
+    suit: null,
     symbol: "⛓️",
     meaning:
       "Two figures stand chained beneath a horned Baphomet, yet the chains hang loose around their necks. Capricorn's earthy ambition curdles into attachment here, showing how comfort, craving, or fear can bind you with your own quiet consent.",
@@ -208,6 +244,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-tower",
     name: "The Tower",
+    arcana: "major",
+    suit: null,
     symbol: "⚡",
     meaning:
       "Lightning strikes the crown from a tall tower and two figures fall into open air. Martial fire arrives without warning to bring down what was built on a flawed foundation, and the shock carries a hard revelation with it.",
@@ -219,6 +257,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-star",
     name: "The Star",
+    arcana: "major",
+    suit: null,
     symbol: "🌟",
     meaning:
       "A figure kneels by a pool pouring water onto land and back into the stream beneath eight shining stars. Aquarian air brings calm clarity after upheaval, restoring faith through gentle, unhurried healing rather than dramatic rescue.",
@@ -230,6 +270,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-moon",
     name: "The Moon",
+    arcana: "major",
+    suit: null,
     symbol: "🌕",
     meaning:
       "A path winds between two towers under a moon with a human face, while a dog and a wolf howl and a crayfish leaves the pool. Piscean water blurs outlines, so what you feel may outrun what you can verify.",
@@ -241,6 +283,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-sun",
     name: "The Sun",
+    arcana: "major",
+    suit: null,
     symbol: "☀️",
     meaning:
       "A child rides a white horse beneath a great radiant sun, banner lifted, sunflowers tall behind the wall. Solar fire brings plain visibility, vitality, and the kind of success that needs no explaining or defending.",
@@ -252,6 +296,8 @@ export const DECK: TarotCard[] = [
   {
     id: "judgement",
     name: "Judgement",
+    arcana: "major",
+    suit: null,
     symbol: "🎺",
     meaning:
       "An angel's trumpet sounds and figures rise from open coffins with arms lifted. Plutonian fire calls for an honest reckoning with your own history, and the forgiveness that follows lets you answer a deeper purpose.",
@@ -263,6 +309,8 @@ export const DECK: TarotCard[] = [
   {
     id: "the-world",
     name: "The World",
+    arcana: "major",
+    suit: null,
     symbol: "🌍",
     meaning:
       "A dancer moves inside a laurel wreath while four living creatures watch from the corners. Saturn's long discipline pays out here as completion, the moment separate efforts integrate into something whole enough to stand on its own.",
@@ -274,6 +322,8 @@ export const DECK: TarotCard[] = [
   {
     id: "ace-of-wands",
     name: "Ace of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "A hand emerges from a cloud holding a sprouting wand above a distant castle and open hills. As the suit's first card, it offers raw fiery potential, an idea alive enough to leaf out if you take hold of it.",
@@ -285,6 +335,8 @@ export const DECK: TarotCard[] = [
   {
     id: "two-of-wands",
     name: "Two of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "A figure stands on a battlement holding a small globe, one wand fixed and one in hand, gazing past a safe harbor. Mars in Aries lends the restless drive to plan a bigger life than the one currently in view.",
@@ -296,6 +348,8 @@ export const DECK: TarotCard[] = [
   {
     id: "three-of-wands",
     name: "Three of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "A figure stands on a cliff between three planted wands, watching ships move across open water. Solar Aries energy marks the point where plans have launched and foresight replaces effort, with results traveling toward you from a distance.",
@@ -307,6 +361,8 @@ export const DECK: TarotCard[] = [
   {
     id: "four-of-wands",
     name: "Four of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "Four wands hold a flowered canopy while figures raise bouquets before a sunlit castle. Venus in Aries makes this a warm, social pause, a structure built just sturdily enough to gather people under and celebrate together.",
@@ -318,6 +374,8 @@ export const DECK: TarotCard[] = [
   {
     id: "five-of-wands",
     name: "Five of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "Five youths brandish staves in a scramble that looks fiercer than it is, Saturn's discipline wrestling Leo's pride. The struggle of wills sharpens your position, testing whether you can compete without losing sight of why you entered the ring.",
@@ -329,6 +387,8 @@ export const DECK: TarotCard[] = [
   {
     id: "six-of-wands",
     name: "Six of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "A rider crowned with laurel moves through a cheering crowd, Jupiter expanding Leo's warmth into public acclaim. External validation arrives and it is earned, confirming that the work you did quietly has been seen by others.",
@@ -340,6 +400,8 @@ export const DECK: TarotCard[] = [
   {
     id: "seven-of-wands",
     name: "Seven of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "One figure stands on a hillock, six staves pushing up from below while Mars lends Leo the nerve to hold position. You are defending something you built, and the high ground is yours as long as you remember why it matters.",
@@ -351,6 +413,8 @@ export const DECK: TarotCard[] = [
   {
     id: "eight-of-wands",
     name: "Eight of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "Eight staves fly through open sky with nothing blocking their path, Mercury's quickness carried on Sagittarian aim. Events accelerate, messages land, and plans that felt stuck suddenly move all at once in the direction you pointed them.",
@@ -362,6 +426,8 @@ export const DECK: TarotCard[] = [
   {
     id: "nine-of-wands",
     name: "Nine of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "A bandaged figure leans on one staff with eight more standing behind, Moon in Sagittarius keeping watch through tiredness. You have been through enough to be wary and strong enough to stand anyway; this is the final stretch, not the beginning.",
@@ -373,6 +439,8 @@ export const DECK: TarotCard[] = [
   {
     id: "ten-of-wands",
     name: "Ten of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "A figure hauls ten staves bundled awkwardly against the chest, town in sight but view obscured, Saturn weighing down Sagittarian ambition. You are carrying more than one person should, and the load is proof of commitment rather than capability.",
@@ -384,6 +452,8 @@ export const DECK: TarotCard[] = [
   {
     id: "page-of-wands",
     name: "Page of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "A young figure in a patterned tunic of salamanders studies a sprouting staff, desert open ahead. Earth grounds Fire just enough to begin: fresh enthusiasm, surprising news, and the honest beginner's willingness to explore before mastering.",
@@ -395,6 +465,8 @@ export const DECK: TarotCard[] = [
   {
     id: "knight-of-wands",
     name: "Knight of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "Armored and plumed, this knight sits a rearing horse mid-charge, Air fanning Fire into pure forward motion. Courage outruns caution here, and that is sometimes exactly right: adventure, travel, and bold commitments favor whoever actually moves.",
@@ -406,6 +478,8 @@ export const DECK: TarotCard[] = [
   {
     id: "queen-of-wands",
     name: "Queen of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "Sunflowers, carved lions, and a black cat at her feet: this queen holds Fire with Water's steadiness, warm and entirely self-possessed. Your presence draws people without effort because it rests on self-knowledge rather than performance.",
@@ -417,6 +491,8 @@ export const DECK: TarotCard[] = [
   {
     id: "king-of-wands",
     name: "King of Wands",
+    arcana: "minor",
+    suit: "Wands",
     symbol: "♣",
     meaning:
       "Salamanders circle this throne and the staff in his hand is flowering, pure Fire of Fire. Vision plus the authority to build it: you can see the whole structure and hold other people's confidence long enough to make it real.",
@@ -428,6 +504,8 @@ export const DECK: TarotCard[] = [
   {
     id: "ace-of-cups",
     name: "Ace of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "A hand offers a chalice overflowing in five streams while a dove descends with a wafer, Water at its purest beginning. Feeling opens: new love, renewed compassion, or an intuitive sense that something tender in you is coming back online.",
@@ -439,6 +517,8 @@ export const DECK: TarotCard[] = [
   {
     id: "two-of-cups",
     name: "Two of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Two figures exchange cups beneath a winged lion and caduceus, Venus in Cancer blessing a meeting of equals. Attraction here is mutual and balanced, whether romantic or collaborative, and it works because both people bring a full cup.",
@@ -450,6 +530,8 @@ export const DECK: TarotCard[] = [
   {
     id: "three-of-cups",
     name: "Three of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Three figures raise their cups in a circle amid harvest fruit, Mercury in Cancer carrying warmth between them. Joy multiplies when it is shared, and this card marks the friendships, collaborations, and milestones worth gathering people to mark.",
@@ -461,6 +543,8 @@ export const DECK: TarotCard[] = [
   {
     id: "four-of-cups",
     name: "Four of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Seated beneath a tree with three cups ignored at your feet, you have turned inward and stopped tasting what life offers. A fourth cup arrives from a cloud, lunar and Cancerian, asking whether this quiet is rest or avoidance.",
@@ -472,6 +556,8 @@ export const DECK: TarotCard[] = [
   {
     id: "five-of-cups",
     name: "Five of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Cloaked in black, you stare at three spilled cups and cannot yet turn toward the two still standing behind you. Mars in Scorpio makes the ache sharp and private, insisting the wound be felt before the bridge home is crossed.",
@@ -483,6 +569,8 @@ export const DECK: TarotCard[] = [
   {
     id: "six-of-cups",
     name: "Six of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Two children exchange cups filled with white flowers in a sunlit garden, and sweetness arrives without any price attached. Sun in Scorpio warms the deep past, returning memory, familiar faces, and an uncomplicated generosity you had almost forgotten.",
@@ -494,6 +582,8 @@ export const DECK: TarotCard[] = [
   {
     id: "seven-of-cups",
     name: "Seven of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Seven cups rise in cloud, holding a castle, jewels, a wreath, a serpent, and a shrouded figure, each promising something different. Venus in Scorpio makes the imagining seductive, yet none of these shapes becomes real until one is chosen.",
@@ -505,6 +595,8 @@ export const DECK: TarotCard[] = [
   {
     id: "eight-of-cups",
     name: "Eight of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Under an eclipsed moon a figure turns from eight carefully stacked cups and climbs toward the mountains, leaving a visible gap behind. Saturn in Pisces gives this departure weight: something adequate is being released in search of something true.",
@@ -516,6 +608,8 @@ export const DECK: TarotCard[] = [
   {
     id: "nine-of-cups",
     name: "Nine of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Nine cups arc behind a seated figure whose arms are folded in frank satisfaction, the classic wish card. Jupiter in Pisces expands feeling into fullness, marking a moment where what you wanted and what you have finally overlap.",
@@ -527,6 +621,8 @@ export const DECK: TarotCard[] = [
   {
     id: "ten-of-cups",
     name: "Ten of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "A rainbow of ten cups arches over a couple with arms raised and children dancing beside them, happiness shared rather than hoarded. Mars in Pisces drives the devotion that builds such a home, turning love into something actively protected.",
@@ -538,6 +634,8 @@ export const DECK: TarotCard[] = [
   {
     id: "page-of-cups",
     name: "Page of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "A young page lifts a cup and finds a fish gazing back, absurd and delightful, with the sea rolling behind. Earth steadies water here, letting an unexpected message, feeling, or creative impulse be received without immediate judgment.",
@@ -549,6 +647,8 @@ export const DECK: TarotCard[] = [
   {
     id: "knight-of-cups",
     name: "Knight of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Helmet winged like Mercury, a knight rides a white horse at a walk, offering his cup toward a stream ahead. Air carries water here, turning deep feeling into movement: an invitation, a confession, a creative quest followed on purpose.",
@@ -560,6 +660,8 @@ export const DECK: TarotCard[] = [
   {
     id: "queen-of-cups",
     name: "Queen of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "Throned at the water's edge, she gazes into an ornate covered cup, holding feeling without being swept away by it. Pure water doubled gives unusual empathy, the ability to sit with someone's pain and remain entirely steady.",
@@ -571,6 +673,8 @@ export const DECK: TarotCard[] = [
   {
     id: "king-of-cups",
     name: "King of Cups",
+    arcana: "minor",
+    suit: "Cups",
     symbol: "♥",
     meaning:
       "His throne floats on a restless sea while a ship rides the swell and a fish amulet hangs at his chest, calm amid motion. Fire directs water here, producing composure that feels deeply rather than numbly.",
@@ -582,6 +686,8 @@ export const DECK: TarotCard[] = [
   {
     id: "ace-of-swords",
     name: "Ace of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "A hand emerges from cloud gripping an upright blade crowned with laurel and palm, the first pure spark of Air. Confusion parts, a truth announces itself plainly, and you finally have language for what you already sensed.",
@@ -593,6 +699,8 @@ export const DECK: TarotCard[] = [
   {
     id: "two-of-swords",
     name: "Two of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "Blindfolded before a moonlit sea, she balances two crossed blades and refuses to lower either one. Moon in Libra seeks fairness so earnestly that choosing feels like betrayal, so the standoff is held in place by sheer effort.",
@@ -604,6 +712,8 @@ export const DECK: TarotCard[] = [
   {
     id: "three-of-swords",
     name: "Three of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "Three blades pierce a single heart beneath grey rain, and the truth you suspected finally lands. Saturn in Libra asks you to feel the loss honestly, because naming the wound is the first real act of repair.",
@@ -615,6 +725,8 @@ export const DECK: TarotCard[] = [
   {
     id: "four-of-swords",
     name: "Four of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "A figure lies still in a quiet chapel, three swords hung above and one laid beneath in truce. Jupiter in Libra blesses the pause, suggesting that stepping back from the fight is not surrender but deliberate restoration.",
@@ -626,6 +738,8 @@ export const DECK: TarotCard[] = [
   {
     id: "five-of-swords",
     name: "Five of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "One figure gathers the fallen swords while two walk away beneath a ragged sky, and the win tastes like nothing. Venus in Aquarius exposes the cost of principle without warmth, asking what the argument actually bought you.",
@@ -637,6 +751,8 @@ export const DECK: TarotCard[] = [
   {
     id: "six-of-swords",
     name: "Six of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "A ferryman poles a small boat from choppy water toward a smoother shore, six swords standing upright in the hull. Mercury in Aquarius makes this a mental crossing, carrying your lessons along while the turbulence is left behind.",
@@ -648,6 +764,8 @@ export const DECK: TarotCard[] = [
   {
     id: "seven-of-swords",
     name: "Seven of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "A figure slips away from camp with five swords, leaving two planted behind and glancing over one shoulder. Moon in Aquarius colors the scene with cleverness and concealment, and whatever is being carried off was not fully earned.",
@@ -659,6 +777,8 @@ export const DECK: TarotCard[] = [
   {
     id: "eight-of-swords",
     name: "Eight of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "A blindfolded figure stands loosely bound among eight planted swords, feet free and the cage merely implied. Jupiter in Gemini enlarges the stories you tell yourself, until the limitation feels total even though the path out stays open.",
@@ -670,6 +790,8 @@ export const DECK: TarotCard[] = [
   {
     id: "nine-of-swords",
     name: "Nine of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "Someone sits upright in the dark with their face in their hands while nine swords hang on the wall behind. Mars in Gemini drives thought into overdrive, so this dread belongs to the small hours rather than the daylight facts.",
@@ -681,6 +803,8 @@ export const DECK: TarotCard[] = [
   {
     id: "ten-of-swords",
     name: "Ten of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "A figure lies face down beneath ten swords while black sky gives way to a thin band of gold. The pain is not subtle and the ending is real, yet Sun in Gemini places first light in this frame deliberately.",
@@ -692,6 +816,8 @@ export const DECK: TarotCard[] = [
   {
     id: "page-of-swords",
     name: "Page of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "A young figure holds a sword aloft on windy ground, hair and clouds in motion, eager to test every idea. Earth steadies this airy page just enough, giving you an appetite for learning and the nerve to ask uncomfortable questions.",
@@ -703,6 +829,8 @@ export const DECK: TarotCard[] = [
   {
     id: "knight-of-swords",
     name: "Knight of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "An armored rider charges into the wind with sword raised, horse at full gallop and clouds torn behind him. This is pure air in motion, decisive and fearless, acting on conviction rather than waiting for perfect conditions to arrive.",
@@ -714,6 +842,8 @@ export const DECK: TarotCard[] = [
   {
     id: "queen-of-swords",
     name: "Queen of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "She sits above the clouds with her sword upright and one hand open, a butterfly carved at her crown. Experience has taught her fairness without flattery, and her kindness takes the form of telling you the truth plainly.",
@@ -725,6 +855,8 @@ export const DECK: TarotCard[] = [
   {
     id: "king-of-swords",
     name: "King of Swords",
+    arcana: "minor",
+    suit: "Swords",
     symbol: "♠",
     meaning:
       "A king sits upright on a stone throne, sword held at a slight angle, butterflies carved behind his head. Fire moves this airy suit into decision, and his power rests on reasoning well and applying principle without playing favorites.",
@@ -736,6 +868,8 @@ export const DECK: TarotCard[] = [
   {
     id: "ace-of-pentacles",
     name: "Ace of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "A hand offers a single golden coin above a walled garden where lilies bloom and a hedged arch opens onto mountains. Earth makes this beginning tangible, a real seed in real soil rather than only a bright idea.",
@@ -747,6 +881,8 @@ export const DECK: TarotCard[] = [
   {
     id: "two-of-pentacles",
     name: "Two of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "A young figure dances while juggling two pentacles bound in a lemniscate, ships rocking on the waves behind him. You are holding several commitments at once, and Jupiter in Capricorn rewards flexible, lighthearted handling of all of them.",
@@ -758,6 +894,8 @@ export const DECK: TarotCard[] = [
   {
     id: "three-of-pentacles",
     name: "Three of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "A sculptor stands on a bench in the cathedral while a monk and an architect study the plans with him. Mars in Capricorn drives disciplined craft here, and your specialized skill earns recognition because others can finally see what you build.",
@@ -769,6 +907,8 @@ export const DECK: TarotCard[] = [
   {
     id: "four-of-pentacles",
     name: "Four of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "A seated figure clutches one pentacle, balances another on the crown, and pins two beneath the feet while the city stays shut out behind. Under the Capricorn Sun you guard what you earned, and that caution is both shelter and cage.",
@@ -780,6 +920,8 @@ export const DECK: TarotCard[] = [
   {
     id: "five-of-pentacles",
     name: "Five of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "Two ragged figures trudge through snow past a glowing stained glass window they never once look up at. This five marks a lean season where loss and loneliness feel total, though warmth sits closer than the cold convinces you to believe.",
@@ -791,6 +933,8 @@ export const DECK: TarotCard[] = [
   {
     id: "six-of-pentacles",
     name: "Six of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "A merchant holds balanced scales in one hand while placing coins into an outstretched palm. Under the Taurean Moon, giving and receiving find their proportion, and the card asks which side of that exchange you genuinely occupy now.",
@@ -802,6 +946,8 @@ export const DECK: TarotCard[] = [
   {
     id: "seven-of-pentacles",
     name: "Seven of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "Leaning on a staff, a gardener studies seven pentacles ripening on the vine he planted himself. Saturn in Taurus slows the clock here, asking you to assess progress honestly rather than harvest a crop that is still quietly filling out.",
@@ -813,6 +959,8 @@ export const DECK: TarotCard[] = [
   {
     id: "eight-of-pentacles",
     name: "Eight of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "A craftsman sits carving one pentacle after another, finished work hung carefully on the beam beside him. The Virgo Sun blesses this quiet repetition, where attention to small and unglamorous detail turns ordinary effort into real, dependable skill.",
@@ -824,6 +972,8 @@ export const DECK: TarotCard[] = [
   {
     id: "nine-of-pentacles",
     name: "Nine of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "A woman stands alone in her walled vineyard with a hooded falcon resting on her glove. Venus in Virgo savors refined pleasure here, the earned ease of someone who built her own garden and can finally walk through it slowly.",
@@ -835,6 +985,8 @@ export const DECK: TarotCard[] = [
   {
     id: "ten-of-pentacles",
     name: "Ten of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "An elder sits beneath an archway with family, dogs, and ten pentacles arranged like a tree of life. This card speaks of structures that outlive you, where wealth means continuity, belonging, and something steady handed forward to others.",
@@ -846,6 +998,8 @@ export const DECK: TarotCard[] = [
   {
     id: "page-of-pentacles",
     name: "Page of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "A young figure stands in a green field, holding a single pentacle up and studying it with complete absorption. Earth of Earth, this page carries a practical idea in its earliest form, curious, grounded, and genuinely ready to learn.",
@@ -857,6 +1011,8 @@ export const DECK: TarotCard[] = [
   {
     id: "knight-of-pentacles",
     name: "Knight of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "Still on a heavy black horse at the edge of plowed fields, this knight holds his pentacle without any flourish. Air of Earth moves slowly and finishes what it starts, proving unremarkable consistency outpaces inspiration over any real distance.",
@@ -868,6 +1024,8 @@ export const DECK: TarotCard[] = [
   {
     id: "queen-of-pentacles",
     name: "Queen of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "Seated among flowering vines with a pentacle cradled in her lap and a rabbit at her feet, this queen tends garden and ledger alike. Water of Earth nurtures practically, making comfort out of attention and steady, ordinary competence.",
@@ -879,6 +1037,8 @@ export const DECK: TarotCard[] = [
   {
     id: "king-of-pentacles",
     name: "King of Pentacles",
+    arcana: "minor",
+    suit: "Pentacles",
     symbol: "♦",
     meaning:
       "Robed in grapevines on a throne carved with bulls, this king rests one hand on his pentacle with the castle he built behind him. Fire of Earth turns ambition into tangible provision and governs resources with calm, practiced authority.",
@@ -888,3 +1048,9 @@ export const DECK: TarotCard[] = [
     numerology: { value: 14, note: "authority & command, through practice" },
   },
 ];
+
+/** The 22 Major Arcana, in order. */
+export const MAJOR_ARCANA: TarotCard[] = DECK.filter((card) => card.arcana === "major");
+
+/** The 56 Minor Arcana, grouped by suit in Wands, Cups, Swords, Pentacles order. */
+export const MINOR_ARCANA: TarotCard[] = DECK.filter((card) => card.arcana === "minor");

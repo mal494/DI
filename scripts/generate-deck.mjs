@@ -37,6 +37,8 @@ function toCard(c) {
   return {
     id: c.slug,
     name: c.name,
+    arcana: isMajor ? "major" : "minor",
+    suit: isMajor ? null : c.suit,
     symbol,
     meaning: c.meanings.upright.description,
     keywords: c.meanings.upright.keywords.slice(0, 3).map((k) => k.toLowerCase()),
@@ -70,6 +72,8 @@ const body = cards
     (c) => `  {
     id: ${q(c.id)},
     name: ${q(c.name)},
+    arcana: ${q(c.arcana)},
+    suit: ${c.suit === null ? "null" : q(c.suit)},
     symbol: ${q(c.symbol)},
     meaning:
       ${q(c.meaning)},
@@ -96,6 +100,10 @@ export interface TarotCard {
   id: string;
   /** The card's traditional name. */
   name: string;
+  /** Which half of the deck the card belongs to. */
+  arcana: "major" | "minor";
+  /** Suit name for minors ("Wands", "Cups", "Swords", "Pentacles"); null for majors. */
+  suit: string | null;
   /** A glyph rendered as the card face placeholder when no artwork exists. */
   symbol: string;
   /** Reflective interpretation, warm and specific. */
@@ -114,6 +122,12 @@ export interface TarotCard {
 export const DECK: TarotCard[] = [
 ${body}
 ];
+
+/** The 22 Major Arcana, in order. */
+export const MAJOR_ARCANA: TarotCard[] = DECK.filter((card) => card.arcana === "major");
+
+/** The 56 Minor Arcana, grouped by suit in Wands, Cups, Swords, Pentacles order. */
+export const MINOR_ARCANA: TarotCard[] = DECK.filter((card) => card.arcana === "minor");
 `;
 
 writeFileSync(OUT, out);
