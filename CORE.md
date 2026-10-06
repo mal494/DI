@@ -10,14 +10,18 @@ https://github.com/mal494/divine-insight-core
 ## Pinned version
 
 ```
-core.version = v1.5
+core.version = v1.6.1
 ```
+
+That is deck 4.6.1, schema 1.6.1. Core v1.6 added a `short_description` field
+to every card; the generator does not read it yet, so the site's `TarotCard`
+type is unchanged.
 
 This repo keeps no copy of the dataset. `scripts/generate-deck.mjs` fetches it
 from the public Core repo at the tag in `core.version`:
 
 ```
-https://raw.githubusercontent.com/mal494/divine-insight-core/<tag>/data/tarot_data_v1.5.json
+https://raw.githubusercontent.com/mal494/divine-insight-core/<tag>/data/tarot_data_v1.6.1.json
 ```
 
 ## Generated deck
