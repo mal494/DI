@@ -1,7 +1,7 @@
 /**
  * GENERATED FILE - DO NOT EDIT BY HAND.
  *
- * Built from Divine Insight Core 4.5 (schema 1.5)
+ * Built from Divine Insight Core 4.6.1 (schema 1.6.1)
  * by scripts/generate-deck.mjs. Card copy changes land in Core first:
  * https://github.com/mal494/divine-insight-core
  *
@@ -329,7 +329,7 @@ export const DECK: TarotCard[] = [
       "A hand emerges from a cloud holding a sprouting wand above a distant castle and open hills. As the suit's first card, it offers raw fiery potential, an idea alive enough to leaf out if you take hold of it.",
     keywords: ["inspiration", "potential", "spark"],
     element: "Fire",
-    astrology: "Fire Signs",
+    astrology: "Aries / Leo / Sagittarius",
     numerology: { value: 1, note: "new beginnings, through will" },
   },
   {
@@ -459,7 +459,7 @@ export const DECK: TarotCard[] = [
       "A young figure in a patterned tunic of salamanders studies a sprouting staff, desert open ahead. Earth grounds Fire just enough to begin: fresh enthusiasm, surprising news, and the honest beginner's willingness to explore before mastering.",
     keywords: ["inspiration", "messages", "curiosity"],
     element: "Fire",
-    astrology: "Earth/Fire",
+    astrology: "Fire Signs",
     numerology: { value: 11, note: "curious exploration, through will" },
   },
   {
@@ -472,7 +472,7 @@ export const DECK: TarotCard[] = [
       "Armored and plumed, this knight sits a rearing horse mid-charge, Air fanning Fire into pure forward motion. Courage outruns caution here, and that is sometimes exactly right: adventure, travel, and bold commitments favor whoever actually moves.",
     keywords: ["action", "fearlessness", "adventure"],
     element: "Fire",
-    astrology: "Air/Fire",
+    astrology: "Sagittarius",
     numerology: { value: 12, note: "urgent action, through will" },
   },
   {
@@ -485,7 +485,7 @@ export const DECK: TarotCard[] = [
       "Sunflowers, carved lions, and a black cat at her feet: this queen holds Fire with Water's steadiness, warm and entirely self-possessed. Your presence draws people without effort because it rests on self-knowledge rather than performance.",
     keywords: ["confidence", "independence", "charisma"],
     element: "Fire",
-    astrology: "Water/Fire",
+    astrology: "Aries",
     numerology: { value: 13, note: "nurturing mastery, through will" },
   },
   {
@@ -498,7 +498,7 @@ export const DECK: TarotCard[] = [
       "Salamanders circle this throne and the staff in his hand is flowering, pure Fire of Fire. Vision plus the authority to build it: you can see the whole structure and hold other people's confidence long enough to make it real.",
     keywords: ["leader", "visionary", "authority"],
     element: "Fire",
-    astrology: "Fire/Fire",
+    astrology: "Leo",
     numerology: { value: 14, note: "authority & command, through will" },
   },
   {
@@ -511,7 +511,7 @@ export const DECK: TarotCard[] = [
       "A hand offers a chalice overflowing in five streams while a dove descends with a wafer, Water at its purest beginning. Feeling opens: new love, renewed compassion, or an intuitive sense that something tender in you is coming back online.",
     keywords: ["love", "spirituality", "new feeling"],
     element: "Water",
-    astrology: "Water Signs",
+    astrology: "Cancer / Scorpio / Pisces",
     numerology: { value: 1, note: "new beginnings, through feeling" },
   },
   {
@@ -641,7 +641,7 @@ export const DECK: TarotCard[] = [
       "A young page lifts a cup and finds a fish gazing back, absurd and delightful, with the sea rolling behind. Earth steadies water here, letting an unexpected message, feeling, or creative impulse be received without immediate judgment.",
     keywords: ["intuition", "messages", "creativity"],
     element: "Water",
-    astrology: "Earth/Water",
+    astrology: "Water Signs",
     numerology: { value: 11, note: "curious exploration, through feeling" },
   },
   {
@@ -654,7 +654,7 @@ export const DECK: TarotCard[] = [
       "Helmet winged like Mercury, a knight rides a white horse at a walk, offering his cup toward a stream ahead. Air carries water here, turning deep feeling into movement: an invitation, a confession, a creative quest followed on purpose.",
     keywords: ["romance", "imagination", "invitation"],
     element: "Water",
-    astrology: "Air/Water",
+    astrology: "Pisces",
     numerology: { value: 12, note: "urgent action, through feeling" },
   },
   {
@@ -667,7 +667,7 @@ export const DECK: TarotCard[] = [
       "Throned at the water's edge, she gazes into an ornate covered cup, holding feeling without being swept away by it. Pure water doubled gives unusual empathy, the ability to sit with someone's pain and remain entirely steady.",
     keywords: ["compassion", "comfort", "intuition"],
     element: "Water",
-    astrology: "Water/Water",
+    astrology: "Cancer",
     numerology: { value: 13, note: "nurturing mastery, through feeling" },
   },
   {
@@ -680,7 +680,7 @@ export const DECK: TarotCard[] = [
       "His throne floats on a restless sea while a ship rides the swell and a fish amulet hangs at his chest, calm amid motion. Fire directs water here, producing composure that feels deeply rather than numbly.",
     keywords: ["emotional balance", "diplomacy", "composure"],
     element: "Water",
-    astrology: "Fire/Water",
+    astrology: "Scorpio",
     numerology: { value: 14, note: "authority & command, through feeling" },
   },
   {
@@ -693,7 +693,7 @@ export const DECK: TarotCard[] = [
       "A hand emerges from cloud gripping an upright blade crowned with laurel and palm, the first pure spark of Air. Confusion parts, a truth announces itself plainly, and you finally have language for what you already sensed.",
     keywords: ["breakthrough", "clarity", "truth"],
     element: "Air",
-    astrology: "Air Signs",
+    astrology: "Gemini / Libra / Aquarius",
     numerology: { value: 1, note: "new beginnings, through thought" },
   },
   {
@@ -823,7 +823,7 @@ export const DECK: TarotCard[] = [
       "A young figure holds a sword aloft on windy ground, hair and clouds in motion, eager to test every idea. Earth steadies this airy page just enough, giving you an appetite for learning and the nerve to ask uncomfortable questions.",
     keywords: ["curiosity", "restlessness", "mental energy"],
     element: "Air",
-    astrology: "Earth/Air",
+    astrology: "Air Signs",
     numerology: { value: 11, note: "curious exploration, through thought" },
   },
   {
@@ -836,7 +836,7 @@ export const DECK: TarotCard[] = [
       "An armored rider charges into the wind with sword raised, horse at full gallop and clouds torn behind him. This is pure air in motion, decisive and fearless, acting on conviction rather than waiting for perfect conditions to arrive.",
     keywords: ["action", "directness", "momentum"],
     element: "Air",
-    astrology: "Air/Air",
+    astrology: "Gemini",
     numerology: { value: 12, note: "urgent action, through thought" },
   },
   {
@@ -849,7 +849,7 @@ export const DECK: TarotCard[] = [
       "She sits above the clouds with her sword upright and one hand open, a butterfly carved at her crown. Experience has taught her fairness without flattery, and her kindness takes the form of telling you the truth plainly.",
     keywords: ["clarity", "independence", "boundaries"],
     element: "Air",
-    astrology: "Water/Air",
+    astrology: "Libra",
     numerology: { value: 13, note: "nurturing mastery, through thought" },
   },
   {
@@ -862,7 +862,7 @@ export const DECK: TarotCard[] = [
       "A king sits upright on a stone throne, sword held at a slight angle, butterflies carved behind his head. Fire moves this airy suit into decision, and his power rests on reasoning well and applying principle without playing favorites.",
     keywords: ["clarity", "authority", "intellect"],
     element: "Air",
-    astrology: "Fire/Air",
+    astrology: "Aquarius",
     numerology: { value: 14, note: "authority & command, through thought" },
   },
   {
@@ -875,7 +875,7 @@ export const DECK: TarotCard[] = [
       "A hand offers a single golden coin above a walled garden where lilies bloom and a hedged arch opens onto mountains. Earth makes this beginning tangible, a real seed in real soil rather than only a bright idea.",
     keywords: ["abundance", "opportunity", "new foundation"],
     element: "Earth",
-    astrology: "Earth Signs",
+    astrology: "Taurus / Virgo / Capricorn",
     numerology: { value: 1, note: "new beginnings, through practice" },
   },
   {
@@ -1005,7 +1005,7 @@ export const DECK: TarotCard[] = [
       "A young figure stands in a green field, holding a single pentacle up and studying it with complete absorption. Earth of Earth, this page carries a practical idea in its earliest form, curious, grounded, and genuinely ready to learn.",
     keywords: ["manifestation", "skill", "new opportunity"],
     element: "Earth",
-    astrology: "Earth/Earth",
+    astrology: "Earth Signs",
     numerology: { value: 11, note: "curious exploration, through practice" },
   },
   {
@@ -1018,7 +1018,7 @@ export const DECK: TarotCard[] = [
       "Still on a heavy black horse at the edge of plowed fields, this knight holds his pentacle without any flourish. Air of Earth moves slowly and finishes what it starts, proving unremarkable consistency outpaces inspiration over any real distance.",
     keywords: ["hard work", "routine", "reliability"],
     element: "Earth",
-    astrology: "Air/Earth",
+    astrology: "Virgo",
     numerology: { value: 12, note: "urgent action, through practice" },
   },
   {
@@ -1031,7 +1031,7 @@ export const DECK: TarotCard[] = [
       "Seated among flowering vines with a pentacle cradled in her lap and a rabbit at her feet, this queen tends garden and ledger alike. Water of Earth nurtures practically, making comfort out of attention and steady, ordinary competence.",
     keywords: ["nurturing", "security", "practicality"],
     element: "Earth",
-    astrology: "Water/Earth",
+    astrology: "Capricorn",
     numerology: { value: 13, note: "nurturing mastery, through practice" },
   },
   {
@@ -1044,7 +1044,7 @@ export const DECK: TarotCard[] = [
       "Robed in grapevines on a throne carved with bulls, this king rests one hand on his pentacle with the castle he built behind him. Fire of Earth turns ambition into tangible provision and governs resources with calm, practiced authority.",
     keywords: ["abundance", "mastery", "stewardship"],
     element: "Earth",
-    astrology: "Fire/Earth",
+    astrology: "Taurus",
     numerology: { value: 14, note: "authority & command, through practice" },
   },
 ];
