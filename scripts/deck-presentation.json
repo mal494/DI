@@ -1,0 +1,120 @@
+{
+  "majors": {
+    "the-fool": {
+      "symbol": "🃏",
+      "numerologyNote": "beginnings & boundless potential"
+    },
+    "the-magician": {
+      "symbol": "🪄",
+      "numerologyNote": "manifestation & focused will"
+    },
+    "the-high-priestess": {
+      "symbol": "🌙",
+      "numerologyNote": "intuition & hidden wisdom"
+    },
+    "the-empress": {
+      "symbol": "🌹",
+      "numerologyNote": "creation & abundance"
+    },
+    "the-emperor": {
+      "symbol": "👑",
+      "numerologyNote": "structure & steady command"
+    },
+    "the-hierophant": {
+      "symbol": "📜",
+      "numerologyNote": "tradition & learned guidance"
+    },
+    "the-lovers": {
+      "symbol": "💞",
+      "numerologyNote": "alignment & heartfelt choice"
+    },
+    "the-chariot": {
+      "symbol": "🏇",
+      "numerologyNote": "momentum & chosen direction"
+    },
+    "strength": {
+      "symbol": "🦁",
+      "numerologyNote": "quiet resolve & courage"
+    },
+    "the-hermit": {
+      "symbol": "🏮",
+      "numerologyNote": "solitude & inner wisdom"
+    },
+    "wheel-of-fortune": {
+      "symbol": "🎡",
+      "numerologyNote": "cycles & turning fortune"
+    },
+    "justice": {
+      "symbol": "⚖️",
+      "numerologyNote": "truth & fair balance"
+    },
+    "the-hanged-man": {
+      "symbol": "⏳",
+      "numerologyNote": "surrender & new sight"
+    },
+    "death": {
+      "symbol": "🦋",
+      "numerologyNote": "transformation & release"
+    },
+    "temperance": {
+      "symbol": "⚗️",
+      "numerologyNote": "balance & gentle blending"
+    },
+    "the-devil": {
+      "symbol": "⛓️",
+      "numerologyNote": "attachment & liberation"
+    },
+    "the-tower": {
+      "symbol": "⚡",
+      "numerologyNote": "sudden release"
+    },
+    "the-star": {
+      "symbol": "🌟",
+      "numerologyNote": "hope & quiet renewal"
+    },
+    "the-moon": {
+      "symbol": "🌕",
+      "numerologyNote": "dreams & hidden depths"
+    },
+    "the-sun": {
+      "symbol": "☀️",
+      "numerologyNote": "vitality & radiant joy"
+    },
+    "judgement": {
+      "symbol": "🎺",
+      "numerologyNote": "awakening & higher calling"
+    },
+    "the-world": {
+      "symbol": "🌍",
+      "numerologyNote": "completion & wholeness"
+    }
+  },
+  "suitGlyphs": {
+    "wands": "♣",
+    "cups": "♥",
+    "swords": "♠",
+    "pentacles": "♦"
+  },
+  "numerologyByValue": {
+    "1": "new beginnings",
+    "2": "balance & partnership",
+    "3": "expression & growth",
+    "4": "stability",
+    "5": "change & tension",
+    "6": "harmony & healing",
+    "7": "effort & inner work",
+    "8": "momentum & mastery",
+    "9": "near-completion",
+    "10": "culmination",
+    "11": "curious exploration",
+    "12": "urgent action",
+    "13": "nurturing mastery",
+    "14": "authority & command"
+  },
+  "suitNumerologyFlavor": {
+    "wands": "through will",
+    "cups": "through feeling",
+    "swords": "through thought",
+    "pentacles": "through practice"
+  }
+}
