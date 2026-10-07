@@ -15,6 +15,8 @@
  * never fix. Refusals are logged instead.
  */
 import { createFileRoute } from "@tanstack/react-router";
+import { claimUrlFor, sendGiftEmail } from "~/lib/gift-email";
+import { createGiftClaim, getGiftDetails } from "~/lib/gifts";
 import { markPaid } from "~/lib/orders";
 import { verifyStripeSignature } from "~/lib/stripe-signature";
 
@@ -78,7 +80,30 @@ export const Route = createFileRoute("/api/stripe-webhook")({
 
         if (result !== "applied" && result !== "duplicate") {
           console.error("fulfilment refused:", result, orderId, session.id);
+          return new Response(result, { status: 200 });
         }
+
+        // A paid gift is the one SKU with something to deliver. Mint the claim
+        // token and email the recipient. Failures here are logged, never
+        // thrown: the payment is already good, and a non-2xx would make Stripe
+        // retry the charge event for days over an email problem.
+        if (result === "applied") {
+          try {
+            const gift = await getGiftDetails(orderId);
+            if (gift?.recipientEmail) {
+              const token = await createGiftClaim(orderId);
+              await sendGiftEmail({
+                to: gift.recipientEmail,
+                senderName: gift.senderName,
+                note: gift.note,
+                claimUrl: claimUrlFor(token, request.url),
+              });
+            }
+          } catch (err) {
+            console.error("gift delivery failed for order", orderId, err);
+          }
+        }
+
         return new Response(result, { status: 200 });
       },
     },
