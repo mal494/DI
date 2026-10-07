@@ -24,7 +24,6 @@ import { DECK, type TarotCard } from "~/data/deck";
 import { useEntitlement } from "~/lib/entitlement";
 import {
   EXTENDED_READING_PRICE,
-  PAYMENT_LINKS,
   READING_BUNDLE_PRICE,
   formatPrice,
 } from "~/lib/payments";
@@ -235,15 +234,15 @@ export function ExtendedReading() {
           )}
 
           <p className="mt-2.5 text-xs text-cream-100/55">
-            <a
-              href={PAYMENT_LINKS.readingBundle}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-gold-500/50 underline-offset-2 transition hover:text-gold-200 hover:decoration-gold-400"
+            <button
+              type="button"
+              onClick={() => void entitlement.startCheckout({ sku: "readingBundle" })}
+              disabled={entitlement.busy}
+              className="cursor-pointer underline decoration-gold-500/50 underline-offset-2 transition hover:text-gold-200 hover:decoration-gold-400 disabled:cursor-wait disabled:opacity-60"
             >
               Or take three Extended Readings for ${formatPrice(READING_BUNDLE_PRICE)}{" "}
               — one for today, two for when it matters
-            </a>
+            </button>
           </p>
         </div>
       )}
