@@ -76,7 +76,9 @@ export function ExtendedReading() {
     undefined,
   );
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
-  const entitlement = useEntitlement("extendedReading");
+  const entitlement = useEntitlement("extendedReading", {
+    alsoAccept: ["readingBundle"],
+  });
   const unlocked = entitlement.status === "unlocked";
 
   const positions = SPREAD_POSITIONS[5];
