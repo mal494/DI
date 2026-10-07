@@ -3,20 +3,24 @@
  *
  * A responsive four-tier ladder: Single Insight ($2.99) as the entry rung,
  * Extended Reading ($9.99) as the signature, the Reading Bundle ($19.99) as
- * the per-unit best value, and the Gift Reading ($5.00). Each tier's CTA opens
- * the Stripe checkout link in a new tab (honor-based: payment is never
- * verified, and no draw is gated on the link).
+ * the per-unit best value, and the Gift Reading ($5.00).
  *
- * SSR-safe: this section renders static, deterministic content only — no
- * random draws, no clock-dependent output — so server and client always
- * match.
+ * Every CTA goes through /api/checkout rather than opening a payment link
+ * directly: the server records a pending order and attaches its id to the
+ * Stripe link, so the purchase can be verified by the webhook and the matching
+ * reading unlocks itself. Buying here scrolls the visitor to the section that
+ * will open once Stripe confirms.
+ *
+ * SSR-safe: renders static, deterministic content only — no random draws, no
+ * clock-dependent output — so server and client always match.
  */
+import { useEntitlement } from "~/lib/entitlement";
 import {
   EXTENDED_READING_PRICE,
   GIFT_READING_PRICE,
-  PAYMENT_LINKS,
   READING_BUNDLE_PRICE,
   SINGLE_INSIGHT_PRICE,
+  type Sku,
   formatPrice,
 } from "~/lib/payments";
 
@@ -34,7 +38,9 @@ type Tier = {
   tagline: string;
   features: string[];
   cta: string;
-  href: string;
+  sku: Sku;
+  /** Where the reading this buys will appear once Stripe confirms. */
+  target: string;
   /** Visual emphasis: "default" | "signature" | "bundle". */
   emphasis: "default" | "signature" | "bundle";
   badge?: string;
@@ -51,7 +57,8 @@ const TIERS: Tier[] = [
       "A line to keep",
     ],
     cta: `Draw yours · $${formatPrice(SINGLE_INSIGHT_PRICE)}`,
-    href: PAYMENT_LINKS.singleInsight,
+    sku: "singleInsight",
+    target: "single-insight",
     emphasis: "default",
   },
   {
@@ -64,7 +71,8 @@ const TIERS: Tier[] = [
       "Extended synthesized reading",
     ],
     cta: `Unlock · $${formatPrice(EXTENDED_READING_PRICE)}`,
-    href: PAYMENT_LINKS.extendedReading,
+    sku: "extendedReading",
+    target: "extended-reading",
     emphasis: "signature",
     badge: "Signature",
   },
@@ -79,7 +87,8 @@ const TIERS: Tier[] = [
       "That's $6.66 per reading, not $9.99",
     ],
     cta: `Get the bundle · $${formatPrice(READING_BUNDLE_PRICE)}`,
-    href: PAYMENT_LINKS.readingBundle,
+    sku: "readingBundle",
+    target: "extended-reading",
     emphasis: "bundle",
     badge: "Best value",
   },
@@ -87,13 +96,10 @@ const TIERS: Tier[] = [
     name: "Gift Reading",
     price: GIFT_READING_PRICE,
     tagline: "A single card, sent with your name.",
-    features: [
-      "Full card read",
-      "A line to carry",
-      "Yours to send or keep",
-    ],
+    features: ["Full card read", "A line to carry", "Yours to send or keep"],
     cta: `Gift a reading · $${formatPrice(GIFT_READING_PRICE)}`,
-    href: PAYMENT_LINKS.giftReading,
+    sku: "giftReading",
+    target: "gift-reading",
     emphasis: "default",
   },
 ];
@@ -109,14 +115,28 @@ const CARD_CLS: Record<Tier["emphasis"], string> = {
 
 const CTA_CLS: Record<Tier["emphasis"], string> = {
   default:
-    "inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-gold-500/50 px-6 py-3 text-xs font-medium tracking-[0.14em] text-gold-300 uppercase transition hover:border-gold-400/80 hover:bg-gold-500/10 hover:text-gold-200 active:scale-[0.98]",
+    "inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-gold-500/50 px-6 py-3 text-xs font-medium tracking-[0.14em] text-gold-300 uppercase transition hover:border-gold-400/80 hover:bg-gold-500/10 hover:text-gold-200 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60",
   signature:
-    "inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-500 px-7 py-3.5 text-xs font-medium tracking-[0.14em] text-night-950 uppercase shadow-[0_8px_28px_rgba(198,160,85,0.35)] transition hover:shadow-[0_10px_40px_rgba(198,160,85,0.55)] hover:brightness-105 active:scale-[0.98]",
+    "inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-500 px-7 py-3.5 text-xs font-medium tracking-[0.14em] text-night-950 uppercase shadow-[0_8px_28px_rgba(198,160,85,0.35)] transition hover:shadow-[0_10px_40px_rgba(198,160,85,0.55)] hover:brightness-105 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60",
   bundle:
-    "inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-500 px-8 py-4 text-sm font-medium tracking-[0.14em] text-night-950 uppercase shadow-[0_10px_40px_rgba(198,160,85,0.5)] transition hover:shadow-[0_14px_55px_rgba(198,160,85,0.7)] hover:brightness-105 active:scale-[0.98]",
+    "inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-500 px-8 py-4 text-sm font-medium tracking-[0.14em] text-night-950 uppercase shadow-[0_10px_40px_rgba(198,160,85,0.5)] transition hover:shadow-[0_14px_55px_rgba(198,160,85,0.7)] hover:brightness-105 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60",
 };
 
 export function Pricing() {
+  // One hook for the whole ladder: any tier's checkout runs through it, and
+  // each SKU's order is stored under its own key, so the matching section
+  // picks it up when it polls.
+  const checkout = useEntitlement("extendedReading", {
+    alsoAccept: ["singleInsight", "readingBundle", "giftReading"],
+  });
+
+  function buy(tier: Tier) {
+    void checkout.startCheckout({ sku: tier.sku });
+    document
+      .getElementById(tier.target)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
     <section
       aria-label="Choose your reading"
@@ -189,22 +209,23 @@ export function Pricing() {
             </ul>
 
             <div className="mt-auto pt-6">
-              <a
-                href={tier.href}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => buy(tier)}
+                disabled={checkout.busy}
                 className={CTA_CLS[tier.emphasis]}
               >
                 <span aria-hidden>✦</span>
-                <span>{tier.cta}</span>
-              </a>
+                <span>{checkout.busy ? "Opening Stripe…" : tier.cta}</span>
+              </button>
             </div>
           </article>
         ))}
       </div>
 
       <p className="animate-fade-up mt-6 text-center text-xs leading-relaxed text-cream-100/45 italic">
-        Secure checkout via Stripe · Draw your reading right after
+        Secure checkout via Stripe · Your reading unlocks itself the moment the
+        payment clears
       </p>
     </section>
   );

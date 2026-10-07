@@ -7,11 +7,16 @@
  *   - Reading Bundle ($19.99)     — three Extended Readings, $6.66 each (per-unit value)
  *   - Gift Reading ($5.00)        — a single card, read and sent with your name
  *
- * Fulfillment is honor-based and entirely client-side (no accounts/backend
- * yet): the unlock CTA opens the Stripe checkout link in a new tab, and the
- * visitor then draws/views the paid reading in-session. Nothing here verifies
- * payment, and no UI claims it does — the copy frames the value of the
- * reading, never a verified purchase.
+ * Fulfilment is verified server-side. The browser never opens one of these
+ * links directly: it POSTs a SKU key to /api/checkout, which records a pending
+ * order and appends that order's id to the link as `client_reference_id`.
+ * Stripe's webhook then marks the order paid, and the draw unlocks off the
+ * order — not off a click. See PAYMENTS.md, and `useEntitlement` in
+ * ~/lib/entitlement for the client half.
+ *
+ * Prices here are display copy. The amounts the server actually trusts live in
+ * `SKUS` in ~/lib/orders and are checked against what Stripe charged; keep the
+ * two in step if a price ever moves.
  *
  * To activate a real product, the lead pastes the Stripe checkout URL into
  * PAYMENT_LINKS. No component code changes.
@@ -27,11 +32,14 @@ export const PAYMENT_LINKS = {
   giftReading: "https://buy.stripe.com/eVqeVdcOTap80Bx60hes001",
 } as const;
 
+/** The four paid SKUs, keyed exactly as the server's price table keys them. */
+export type Sku = keyof typeof PAYMENT_LINKS;
+
 /**
- * Optional tips (donation path) — fixed USD amounts, honor-based like the
- * rest of the site: the tip button opens Stripe in a new tab; nothing here
- * verifies payment and no UI claims it does. Framed as a "leave a tip for the
- * free readings" rail — gratitude capture for engaged readers, never pressure.
+ * Optional tips (donation path) — fixed USD amounts. These stay honor-based on
+ * purpose: a tip unlocks nothing, so there is no entitlement to verify. The
+ * button opens Stripe in a new tab and the copy frames the tip as a gift,
+ * never a purchase and never "pay or the site dies" pressure.
  */
 export const TIP_LINKS = {
   /** Leave a Tip — USD 3.00. */
