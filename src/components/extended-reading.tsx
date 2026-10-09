@@ -243,7 +243,7 @@ export function ExtendedReading() {
                   className={`card-inner ${isRevealed ? "is-revealed" : ""}`}
                 >
                   <div aria-hidden className="card-face card-back" />
-                  <CardFace card={card} revealed={isRevealed} />
+                  <CardFace card={card} />
                 </div>
               </div>
 

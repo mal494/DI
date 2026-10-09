@@ -118,7 +118,7 @@ export function GiftReading() {
           <div className="card-scene mt-8 aspect-[3/5] w-full max-w-[8.5rem] sm:max-w-[11rem]">
             <div className={`card-inner ${revealed ? "is-revealed" : ""}`}>
               <div aria-hidden className="card-face card-back" />
-              <CardFace card={card} revealed={revealed} />
+              <CardFace card={card} />
             </div>
           </div>
 

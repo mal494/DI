@@ -112,7 +112,7 @@ function CardSlot({
           {/* Card back */}
           <div aria-hidden className="card-face card-back" />
           {/* Card face (revealed) */}
-          <CardFace card={card} revealed={revealed} />
+          <CardFace card={card} />
         </div>
       </div>
 

@@ -18,13 +18,7 @@ export const GLYPH_COLOR: Record<string, string> = {
   Earth: "#c6a055", // gold-500
 };
 
-export function CardFace({
-  card,
-  revealed,
-}: {
-  card: TarotCard | null;
-  revealed: boolean;
-}) {
+export function CardFace({ card }: { card: TarotCard | null }) {
   const [artBroken, setArtBroken] = useState(false);
   const artUrl = card ? artUrlFor(card.id) : null;
   const showArt = !!(card && artUrl && !artBroken);
