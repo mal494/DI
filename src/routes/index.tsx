@@ -7,11 +7,11 @@ import { ExtendedReading } from "~/components/extended-reading";
 import { GiftReading } from "~/components/gift-reading";
 import { Pricing } from "~/components/pricing";
 import { ReadingPanel } from "~/components/reading-panel";
+import { SingleInsight } from "~/components/single-insight";
 import { TipJar } from "~/components/tip-jar";
 import { DECK, type TarotCard } from "~/data/deck";
 import {
   EXTENDED_READING_PRICE,
-  PAYMENT_LINKS,
   SINGLE_INSIGHT_PRICE,
   formatPrice,
 } from "~/lib/payments";
@@ -408,22 +408,28 @@ function Home() {
                       reading walks further through it.
                     </p>
                     <div className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                      <a
-                        href={PAYMENT_LINKS.singleInsight}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        type="button"
+                        onClick={() =>
+                          document
+                            .getElementById("single-insight")
+                            ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                        }
                         className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-gold-500/50 px-6 py-2.5 text-xs tracking-[0.14em] text-gold-300 uppercase transition hover:border-gold-400/80 hover:bg-gold-500/10 hover:text-gold-200 active:scale-[0.98]"
                       >
                         Single Insight · ${formatPrice(SINGLE_INSIGHT_PRICE)}
-                      </a>
-                      <a
-                        href={PAYMENT_LINKS.extendedReading}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          document
+                            .getElementById("extended-reading")
+                            ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                        }
                         className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-gold-500/50 px-6 py-2.5 text-xs tracking-[0.14em] text-gold-300 uppercase transition hover:border-gold-400/80 hover:bg-gold-500/10 hover:text-gold-200 active:scale-[0.98]"
                       >
                         Extended Reading · ${formatPrice(EXTENDED_READING_PRICE)}
-                      </a>
+                      </button>
                     </div>
                   </div>
                 )}

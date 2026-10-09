@@ -14,7 +14,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
 const CORE_REPO = "mal494/divine-insight-core";
-const DATASET = "tarot_data_v1.5.json";
+const DATASET = "tarot_data_v1.6.1.json";
 const PRESENTATION = "scripts/deck-presentation.json";
 const OUT = "src/data/deck.generated.ts";
 
